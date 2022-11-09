@@ -67,6 +67,25 @@ Um das Spielobjekt noch zu zeichnen müssen wir jetzt noch `backGroundImage.setu
 
 Jetzt sollte dein Spiel einfach nur ein Hintergrund eines pixeligen Strandes sein.
 
+Der Code im main.js sollte nun ungefähr so aussehen.
+
+```
+let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    backGroundImage.setup()
+}
+
+function draw() {
+    backGroundImage.draw()
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+```
 
 3. Was kann ein GameObjekt.
 
@@ -84,11 +103,6 @@ Sowie die Funktionen.
 
 Die touch funktion kommt später noch zum Zug.
 
-Jetzt sollte dein Code so aussehen.
-
-```
-
-```
 
 4. Der Spieler
 
@@ -154,7 +168,39 @@ Es gehen auch andere Werte. Ausprobieren mach schlauer!
 Dein Code sollte nun so aussehen.
 
 ```
+let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")
+let player = new GameObject(0, 0, 100, 100, "../assets/trout.png")
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    backGroundImage.setup()
+    player.setup()
+
+    player.x = 300
+    player.y = 500
+}
+
+function draw() {
+    if (keyIsDown(LEFT_ARROW)) {
+        player.moveBy(-10, 0)
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+        player.moveBy(10, 0)
+    }
+
+    backGroundImage.draw()
+    player.draw()
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
 ```
+
+Und im Browser ungefähr so.
+<img width="993" alt="image" src="https://user-images.githubusercontent.com/10659582/200959220-b2f13d47-d04e-4e7a-8378-4ab5be033085.png">
+
 
 Amazing. Dein Fisch kann fliegen?
 
@@ -221,6 +267,48 @@ So wird die x Position zufällig zwischen 0 und 800 gesetzt.
 Bravo, dein Code sollte nun so aussehen:
 
 ```
+let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")
+let player = new GameObject(0, 0, 100, 100, "../assets/trout.png")
+let coconut = new GameObject(0, 0, 50, 50, "../assets/coconut.png")
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    backGroundImage.setup()
+    player.setup()
+    coconut.setup()
+
+    player.x = 300
+    player.y = 500
+}
+
+function draw() {
+    if (keyIsDown(LEFT_ARROW)) {
+        player.moveBy(-10, 0)
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+        player.moveBy(10, 0)
+    }
+
+    if(coconut.touch(player)){
+        coconut.y = 0
+        coconut.x = random(0,800)
+    }
+
+    if (coconut.y > 1000) {
+        coconut.y = 0
+    }
+
+    coconut.moveBy(0, 2)
+
+    backGroundImage.draw()
+    player.draw()
+    coconut.draw()
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
 ```
 
 5. Punkte
@@ -241,9 +329,66 @@ Jetzt wollen wir den Counter noch im Spiel anzeigen, dafür können wir dieses C
 ```
 textSize(32) //Es wird dem Programm gesagt, dass die Textgrösse auf 32 gesetzt wird.
 fill(50); //Es wird dem Programm gesagt, dass das nächste mit der Farbe 50 geschrieben werden soll. Das ist so dunkelgrau.
-text("Punkte " + hitCount, 10, 10, 200, 100); // hier machen wir ein text auf dem Bild an Stelle 10, 10 mit Grösse 200, 100 mit den Text Punkte X, X für die Anzahl Punkte. Man kann mit dem + Text verknüpfen.
+text("Punkte " + hitcount, 10, 10, 200, 100); // hier machen wir ein text auf dem Bild an Stelle 10, 10 mit Grösse 200, 100 mit den Text Punkte X, X für die Anzahl Punkte. Man kann mit dem + Text verknüpfen.
 ```
 Füge dies in die Funktion draw() ganz unten.
+
+Dein Code Sollte nun so aussehen.
+
+```
+let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")
+let player = new GameObject(0, 0, 100, 100, "../assets/trout.png")
+let coconut = new GameObject(0, 0, 50, 50, "../assets/coconut.png")
+var hitcount = 0
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    backGroundImage.setup()
+    player.setup()
+    coconut.setup()
+
+    player.x = 300
+    player.y = 500
+}
+
+function draw() {
+    if (keyIsDown(LEFT_ARROW)) {
+        player.moveBy(-10, 0)
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+        player.moveBy(10, 0)
+    }
+
+    if(coconut.touch(player)){
+        coconut.y = 0
+        coconut.x = random(0,800)
+        hitcount++
+    }
+
+    if (coconut.y > 1000) {
+        coconut.y = 0
+    }
+
+    coconut.moveBy(0, 2)
+
+    backGroundImage.draw()
+    player.draw()
+    coconut.draw()
+
+    textSize(32)
+    fill(50);
+    text("Punkte " + hitcount, 10, 10, 200, 100);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+```
+Und im Browser etwa so.:
+
+<img width="987" alt="image" src="https://user-images.githubusercontent.com/10659582/200959721-1df314ac-48a1-4935-8581-f35a209aaa26.png">
+
 
 Jetzt sehen wir den Punktestand und wir können für ewig Kokosnüsse als Fisch am Strand sammeln.
 
