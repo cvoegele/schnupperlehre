@@ -4,14 +4,14 @@ Ziel: Erstelle ein Spiel mit indem eim Fisch am Strand Kokosnüsse aufsammelt.
 
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/10659582/200948955-3af1f9b3-a38b-4866-9747-8c820b7142d5.png">
 
-Lernziele: 
+Lernziele:
 - Basic Programming
-- Variablen
+- Variabeln
 - Program Flow
 
 1. Code ansehen
 
-Öffne das Index.html File in einem Webbrowser. 
+Öffne das Index.html File in einem Webbrowser.
 Es sollte ein kleiner Text über den Screen sich bewegen (von oben nach unten).
 Das ist gut, dass heisst, dass die P5.js library die wir verwenden richtig eingebunden ist.
 Falls dies nicht der Fall ist melden.
@@ -38,7 +38,7 @@ function windowResized() {
 }
 ```
 
-`setup()` ist da um die Zeichenfläche (Canvas) des Programms zu initaliseren. 
+`setup()` ist da um die Zeichenfläche (Canvas) des Programms zu initaliseren.
 `draw()` wird in jedem Frame des Programmes ausgeführt.
 `windowResized()` updated das Canvas wenn man das Browserwindow verändert. Diese Funktion werden wir nicht bearbeiten.
 
@@ -48,7 +48,7 @@ function windowResized() {
 Um das Spiel jetzt zu machen müssen wir Dinge ins Spiel bringe, welche auf dem Canvas gezeichnet werden.
 
 Dafür habe ich bereits etwas Code vorgeschrieben.
-Füge oben am File main.js 
+Füge oben am File main.js
 
 `let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")`
 
@@ -92,7 +92,7 @@ function windowResized() {
 Das GameObjekt ist nicht einfach nur so ein Ding, sondern das was man in der Programmierung eine Klasse nennt. Klassen (Class) sind Objekte, die Daten und Funktionen enthalten.
 
 Das GameObject enthält die folgenden Daten.
-- die Position des GameObjects mit den Variabeln x und y. 
+- die Position des GameObjects mit den Variabeln x und y.
 - die Grösse des GameObjects mit den Variablen width, height.
 
 Sowie die Funktionen.
@@ -125,7 +125,7 @@ if (x = 4) {
 }
 ```
 
-Das Statement `x = 4` ergibt ein boolean value, welches entwerde wahr oder falsch (true or false) ist. 
+Das Statement `x = 4` ergibt ein boolean value, welches entwerde wahr oder falsch (true or false) ist.
 Solch ein boolean value kann man auch einfach definieren.
 
 ```
@@ -204,12 +204,12 @@ Und im Browser ungefähr so.
 
 Amazing. Dein Fisch kann fliegen?
 
-4. Sammelstücke 
+4. Sammelstücke
 
 Jetzt wollen wir das der Fisch etwas aufsammeln kann.
 Was gibt es denn am Strand? Kokosnüsse!
 
-Wir machen nochmal ein GameObject 
+Wir machen nochmal ein GameObject
 `let coconut = new GameObject(0, 0, 50, 50, "../assets/coconut.png")`
 
 Auch hier wieder das setup() und draw() hinzufügen, repsektive hinzufügen.
@@ -233,13 +233,13 @@ if(coconut.touch(player)) {
 }
 ```
 
-Super. Jetzt muss da einfach noch was passieren. 
+Super. Jetzt muss da einfach noch was passieren.
 Wie wäre es wenn wir jetzt die Kokosnuss nach erfolgreichen berühren wieder nach oben bringen, dass sie wieder fallen kann.
 Um das zu tun, können wir `coconut.y = 0`, innerhalb des if Statements hinzufügen;
 
 So dass es dann so aussieht.
 if(coconut.touch(player)) {
-  cococnut.y = 0
+cococnut.y = 0
 }
 
 Jetzt geht die immer wieder hoch wenn man sie fängt. Aber was wenn man sie nicht fängt? Dann fällt sie einfach aus dem Bild.
@@ -313,7 +313,7 @@ function windowResized() {
 
 5. Punkte
 
-Jetzt wollen wir noch die Punkte zählen. 
+Jetzt wollen wir noch die Punkte zählen.
 Dafür machen wir eine variable die die Anzahl gesammelten Kokosnüssen anzeigt.
 Anstelle eines GameObjektes machen wir jetzt eine normale Variablen wie folgt.
 
