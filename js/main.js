@@ -1,6 +1,6 @@
 
 let backGroundImage = new GameObject(0, 0, 1000, 1000, "../assets/beach.webp")
-let fisch = new GameObject(0, 0, 100, 100, "../assets/trout.png")
+let player = new GameObject(0, 0, 100, 100, "../assets/trout.png")
 
 
 function setup() {
@@ -8,25 +8,25 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
 
     //initialize position of gameobjects at the start of the game
-    fisch.x = 100;
-    fisch.y = 500;
+    player.x = 100;
+    player.y = 500;
 
     // all gameobjects need to be setup before they can be drawn
-    fisch.setup()
+    player.setup()
     backGroundImage.setup()
 }
 
 function draw() {
 
     if (keyIsDown(LEFT_ARROW)) {
-        fisch.move(-10, 0)
+        player.move(-10, 0)
     }
     if (keyIsDown(RIGHT_ARROW)) {
-        fisch.move(10, 0)
+        player.move(10, 0)
     }
 
     backGroundImage.draw()
-    fisch.draw();
+    player.draw();
 }
 
 function keyIsDown() {
