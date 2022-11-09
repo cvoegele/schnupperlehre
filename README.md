@@ -1,4 +1,6 @@
-# Schupperlehre 2022 - i4Ds - Christoph Vögele
+# Schupperlehre 2022 - i4Ds - 
+
+designed by Christoph Vögele
 
 Ziel: Erstelle ein Spiel mit indem eim Fisch am Strand Kokosnüsse aufsammelt.
 
