@@ -29,10 +29,6 @@ function draw() {
     player.draw();
 }
 
-function keyIsDown() {
-
-}
-
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
