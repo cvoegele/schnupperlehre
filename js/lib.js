@@ -14,7 +14,7 @@ class GameObject {
         this.imagePath = imagePath;
     }
 
-    move(x, y) {
+    moveBy(x, y) {
         this.x += x;
         this.y += y;
     }

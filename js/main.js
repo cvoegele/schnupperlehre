@@ -20,22 +20,24 @@ function setup() {
 }
 
 function draw() {
-
-
     if (keyIsDown(LEFT_ARROW)) {
-        player.move(-10, 0)
+        player.moveBy(-10, 0)
     }
     if (keyIsDown(RIGHT_ARROW)) {
-        player.move(10, 0)
+        player.moveBy(10, 0)
     }
 
-    coconut.move(0, 2)
+    coconut.moveBy(0, 2)
 
     if (coconut.touch(player)) {
         console.log("Player has touched the coconut.")
         hitCount++;
         coconut.y = 0;
         coconut.x = random(0, 800);
+    }
+
+    if (coconut.y > 1000) {
+        coconut.y = 0;
     }
 
     //need to be drawn in order of visibility
