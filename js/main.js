@@ -21,6 +21,7 @@ function setup() {
 
 function draw() {
 
+
     if (keyIsDown(LEFT_ARROW)) {
         player.move(-10, 0)
     }
@@ -41,6 +42,10 @@ function draw() {
     backGroundImage.draw()
     player.draw()
     coconut.draw()
+
+    textSize(32)
+    fill(50);
+    text("Punkte " + hitCount, 10, 10, 200, 100);
 }
 
 function windowResized() {
